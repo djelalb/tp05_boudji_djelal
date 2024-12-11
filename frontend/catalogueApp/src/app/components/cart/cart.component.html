@@ -1,0 +1,31 @@
+<div class="cart-page">
+    <h1>Votre Panier</h1>
+  
+    <div *ngIf="cartItems$ | async as cartItems">
+        <div class="cart-item" *ngFor="let product of cartItems">
+          <img [src]="product.image" alt="{{ product.name }}" />
+          <div class="details">
+            <span>{{ product.name }}</span>
+            <span>{{ product.price | currency:'EUR':'symbol' }}</span>
+            <button (click)="removeFromCart(product.id)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="(cartItems$ | async)?.length === 0" class="alert alert-info">
+        Votre panier est vide.
+      </div>
+      
+  
+      <div *ngIf="cartItems$ | async as cartItems">
+        <ng-container *ngIf="cartItems.length > 0">
+          <div class="cart-total">
+            <h2>Total : {{ total$ | async | currency:'EUR':'symbol' }}</h2>
+            <button routerLink="/">Continuer vos achats</button>
+          </div>
+        </ng-container>
+      </div>
+      
+      
+  </div>
+  
+  <button routerLink="">Retour au catalogue</button>

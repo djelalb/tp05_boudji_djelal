@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "name": "Gants de Boxe",
+        "price": 45.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/6456165/pexels-photo-6456165.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 2,
+        "name": "Ballon de Football",
+        "price": 19.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/47354/the-ball-stadion-football-the-pitch-47354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+        "id": 3,
+        "name": "Kimono de Judo",
+        "price": 79.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/6253295/pexels-photo-6253295.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 4,
+        "name": "Raquette de Tennis",
+        "price": 59.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/29102005/pexels-photo-29102005/free-photo-of-gros-plan-d-une-raquette-de-tennis-sur-fond-sombre.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 5,
+        "name": "Casque de Rugby",
+        "price": 34.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/3328937/pexels-photo-3328937.jpeg?auto=compress&cs=tinysrgb&w=600g"
+    },
+    {
+        "id": 6,
+        "name": "Gants de MMA",
+        "price": 54.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/6296055/pexels-photo-6296055.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 7,
+        "name": "Maillot de Basket",
+        "price": 29.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/3734784/pexels-photo-3734784.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "Ballon de Volley",
+        "price": 24.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/16069805/pexels-photo-16069805/free-photo-of-sable-sport-sol-moulu.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 9,
+        "name": "Protège-dents",
+        "price": 12.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/6295977/pexels-photo-6295977.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 10,
+        "name": "Ballon de Handball",
+        "price": 15.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/10350342/pexels-photo-10350342.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 11,
+        "name": "Haltère",
+        "price": 25.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 12,
+        "name": "Bandage pour Boxe",
+        "price": 9.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/7992046/pexels-photo-7992046.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 13,
+        "name": "Short de Muay Thai",
+        "price": 22.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/12700586/pexels-photo-12700586.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 14,
+        "name": "Gilet de Sport",
+        "price": 28.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/1040424/pexels-photo-1040424.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 15,
+        "name": "Ballon de Basketball",
+        "price": 20.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/5274538/pexels-photo-5274538.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 16,
+        "name": "Protège Tibias",
+        "price": 17.99,
+        "category": "combat",
+        "image": "https://images.pexels.com/photos/23229168/pexels-photo-23229168/free-photo-of-mouvement-force-formation-boxe.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 17,
+        "name": "Corde à Sauter",
+        "price": 8.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/6390232/pexels-photo-6390232.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 18,
+        "name": "Bande élastique",
+        "price": 11.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/6303496/pexels-photo-6303496.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 19,
+        "name": "Cible de Tir à l'arc",
+        "price": 39.99,
+        "category": "individuel",
+        "image": "https://images.pexels.com/photos/416832/pexels-photo-416832.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        "id": 20,
+        "name": "Bâton de Lacrosse",
+        "price": 50.99,
+        "category": "collectif",
+        "image": "https://images.pexels.com/photos/207688/pexels-photo-207688.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+]

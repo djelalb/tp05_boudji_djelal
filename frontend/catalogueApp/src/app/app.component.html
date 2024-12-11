@@ -1,0 +1,30 @@
+<ng-container *ngIf="isCartRoute(); else mainLayout">
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #mainLayout>
+  <div class="header">
+    <h1>Catalogue de Produits</h1>
+    <div class="cart-info">
+      <span>Articles dans le panier : {{ cartCount$ | async }}</span>
+      <button (click)="toggleCartPreview()">
+        🛒 {{ cartCount$ | async }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Aperçu du panier -->
+  <div class="cart-preview" *ngIf="showCartPreview">
+    <ul>
+      <li *ngFor="let item of cartItems$ | async">
+        <img [src]="item.image" alt="{{ item.name }}" class="preview-image" />
+        <span>{{ item.name }}</span>
+        <span>{{ item.price | currency:'EUR':'symbol' }}</span>
+      </li>
+    </ul>
+    <button routerLink="/cart">Voir le panier</button>
+  </div>
+
+  <app-catalogue></app-catalogue>
+  <router-outlet></router-outlet>
+</ng-template>

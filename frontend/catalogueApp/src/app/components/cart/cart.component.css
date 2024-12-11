@@ -1,0 +1,112 @@
+/* Conteneur principal de la page du panier */
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Prendre toute la hauteur de la page */
+    width: 100vw; /* Prendre toute la largeur de la page */
+    padding: 20px;
+    background-color: #1e1e2f;
+    box-sizing: border-box;
+}
+
+/* Liste des produits dans le panier */
+.cart-item-list {
+    width: 100%;
+    max-width: 800px; /* Limite de largeur pour les écrans larges */
+    background-color: #2b2b3a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Chaque produit dans le panier */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid #444;
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* Pas de bordure pour le dernier produit */
+}
+
+/* Image du produit */
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Détails du produit */
+.cart-item-details {
+    flex: 1;
+    margin-left: 15px;
+    color: #f0f0f5;
+}
+
+.cart-item-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e9c46a;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #e76f51;
+}
+
+/* Bouton de suppression */
+.cart-item-remove {
+    background-color: #e63946;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item-remove:hover {
+    background-color: #ff6b6b;
+}
+
+/* Section des totaux */
+.cart-total {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e9c46a;
+}
+
+/* Bouton de validation */
+.cart-checkout {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1e2f;
+    background-color: #e9c46a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.cart-checkout:hover {
+    background-color: #f4a261;
+    transform: scale(1.05);
+}
