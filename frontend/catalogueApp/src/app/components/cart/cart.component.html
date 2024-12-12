@@ -1,31 +1,32 @@
 <div class="cart-page">
-    <h1>Votre Panier</h1>
-  
-    <div *ngIf="cartItems$ | async as cartItems">
-        <div class="cart-item" *ngFor="let product of cartItems">
-          <img [src]="product.image" alt="{{ product.name }}" />
-          <div class="details">
-            <span>{{ product.name }}</span>
-            <span>{{ product.price | currency:'EUR':'symbol' }}</span>
-            <button (click)="removeFromCart(product.id)">Supprimer</button>
-          </div>
+  <h1>Votre Panier</h1>
+
+  <!-- Liste des produits dans le panier -->
+  <div *ngIf="cartItems$ | async as cartItems">
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let product of cartItems">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <div class="details">
+          <span>{{ product.name }}</span>
+          <span>{{ product.price | currency: 'EUR':'symbol' }}</span>
+          <button (click)="removeFromCart(product.id)">Supprimer</button>
         </div>
       </div>
-      <div *ngIf="(cartItems$ | async)?.length === 0" class="alert alert-info">
-        Votre panier est vide.
-      </div>
-      
-  
-      <div *ngIf="cartItems$ | async as cartItems">
-        <ng-container *ngIf="cartItems.length > 0">
-          <div class="cart-total">
-            <h2>Total : {{ total$ | async | currency:'EUR':'symbol' }}</h2>
-            <button routerLink="/">Continuer vos achats</button>
-          </div>
-        </ng-container>
-      </div>
-      
-      
+    </div>
   </div>
-  
+
+  <!-- Affichage si le panier est vide -->
+  <ng-template #emptyCart>
+    <div class="alert alert-info">
+      Votre panier est vide.
+    </div>
+  </ng-template>
+
+  <!-- Total -->
+  <div *ngIf="total$ | async as total">
+    <h2>Total : {{ total | currency: 'EUR':'symbol' }}</h2>
+    <button routerLink="">Continuer vos achats</button>
+  </div>
+
   <button routerLink="">Retour au catalogue</button>
+</div>

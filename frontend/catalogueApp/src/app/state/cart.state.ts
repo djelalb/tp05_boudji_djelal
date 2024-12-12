@@ -26,22 +26,25 @@ export interface CartStateModel {
 export class CartState {
   @Selector()
   static getCartItems(state: CartStateModel): Product[] {
-      return state.items || [];
+    return state.items || []; // Renvoie une liste vide par défaut
   }
-
+  
   @Selector()
   static getCartCount(state: CartStateModel): number {
-      return state.items?.length || 0;
+    return state.items?.length || 0; // Renvoie 0 si state.items est indéfini
   }
-
+  
 
   @Action(AddToCart)
   addToCart(ctx: StateContext<CartStateModel>, action: AddToCart) {
     const state = ctx.getState();
-    ctx.setState({
-      ...state,
-      items: [...state.items, action.product]
-    });
+    const existingProduct = state.items.find(item => item.id === action.product.id);
+    if (!existingProduct) {
+      ctx.setState({
+        ...state,
+        items: [...state.items, action.product]
+      });
+    }
   }
 
   @Action(RemoveFromCart)

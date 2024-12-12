@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Store } from '@ngxs/store';
 import { AddToCart } from '../../state/cart.state';
+import { CartState } from '../../state/cart.state';
 
 @Component({
   selector: 'app-catalogue',
@@ -69,10 +70,6 @@ export class CatalogueComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.store.dispatch(new AddToCart(product)).subscribe({
-      next: () => console.log('Produit ajouté au panier avec succès.'),
-      error: (err) => console.error('Erreur : Impossible d’ajouter le produit au panier.', err)
-    });  
+    this.store.dispatch(new AddToCart(product));
   }
-  
 }

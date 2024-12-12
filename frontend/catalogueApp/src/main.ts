@@ -7,6 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { CartState } from './app/state/cart.state';
 import { CartComponent } from './app/components/cart/cart.component';
 import { CatalogueComponent } from './app/components/catalogue/catalogue.component';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 const routes: Routes = [
   { path: '', component: CatalogueComponent },
@@ -18,7 +19,10 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     provideHttpClient(),
     importProvidersFrom(
-      NgxsModule.forRoot([CartState])
-    )
+      NgxsModule.forRoot([CartState]),
+      NgxsStoragePluginModule.forRoot({
+        keys: ['cart']
+      })
+    ),
   ]
 });
