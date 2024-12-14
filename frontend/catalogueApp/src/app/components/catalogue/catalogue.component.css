@@ -161,3 +161,32 @@
     box-shadow: none;
     transform: none;
 }
+
+
+.quantity-selector, .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .quantity-selector button, .quantity-controls button {
+    background-color: #2b2b3a;
+    color: #e9c46a;
+    border: 1px solid #e9c46a;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .quantity-selector button:hover, .quantity-controls button:hover {
+    background-color: #e9c46a;
+    color: #2b2b3a;
+  }
+  
+  .quantity-selector span, .quantity-controls span {
+    min-width: 30px;
+    text-align: center;
+    color: #e9c46a;
+  }

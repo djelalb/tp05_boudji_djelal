@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Product } from '../services/catalogue.service';
 
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 export class AddToCart {
   static readonly type = '[Cart] Add';
-  constructor(public product: Product) {}
+  constructor(public product: Product, public quantity: number) {}
 }
 
 export class RemoveFromCart {
@@ -12,8 +17,13 @@ export class RemoveFromCart {
   constructor(public productId: number) {}
 }
 
+export class UpdateQuantity {
+  static readonly type = '[Cart] Update Quantity';
+  constructor(public productId: number, public quantity: number) {}
+}
+
 export interface CartStateModel {
-  items: Product[];
+  items: CartItem[];
 }
 
 @State<CartStateModel>({
@@ -25,24 +35,45 @@ export interface CartStateModel {
 @Injectable()
 export class CartState {
   @Selector()
-  static getCartItems(state: CartStateModel): Product[] {
-    return state.items || []; // Renvoie une liste vide par défaut
+  static getCartItems(state: CartStateModel): CartItem[] {
+    return state?.items?.filter(item => item && item.product) || [];
   }
   
   @Selector()
   static getCartCount(state: CartStateModel): number {
-    return state.items?.length || 0; // Renvoie 0 si state.items est indéfini
+    return (state?.items || [])
+      .filter(item => item && item.product)
+      .reduce((total, item) => total + (item?.quantity || 0), 0);
   }
-  
 
   @Action(AddToCart)
   addToCart(ctx: StateContext<CartStateModel>, action: AddToCart) {
+    if (!action.product) return;
+
     const state = ctx.getState();
-    const existingProduct = state.items.find(item => item.id === action.product.id);
-    if (!existingProduct) {
+    const items = state.items || [];
+    
+    const existingItemIndex = items.findIndex(item => 
+      item.product?.id === action.product.id
+    );
+
+    if (existingItemIndex > -1) {
+      const updatedItems = [...items];
+      updatedItems[existingItemIndex] = {
+        ...updatedItems[existingItemIndex],
+        quantity: updatedItems[existingItemIndex].quantity + action.quantity
+      };
       ctx.setState({
         ...state,
-        items: [...state.items, action.product]
+        items: updatedItems
+      });
+    } else {
+      ctx.setState({
+        ...state,
+        items: [...items, { 
+          product: action.product, 
+          quantity: action.quantity 
+        }]
       });
     }
   }
@@ -52,7 +83,28 @@ export class CartState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      items: state.items.filter(item => item.id !== action.productId)
+      items: (state.items || []).filter(item => item.product?.id !== action.productId)
     });
+  }
+
+  @Action(UpdateQuantity)
+  updateQuantity(ctx: StateContext<CartStateModel>, action: UpdateQuantity) {
+    const state = ctx.getState();
+    if (action.quantity <= 0) {
+      ctx.setState({
+        ...state,
+        items: (state.items || []).filter(item => item.product?.id !== action.productId)
+      });
+    } else {
+      const items = (state.items || []).map(item => 
+        item.product?.id === action.productId 
+          ? { ...item, quantity: action.quantity }
+          : item
+      );
+      ctx.setState({
+        ...state,
+        items
+      });
+    }
   }
 }

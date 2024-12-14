@@ -23,6 +23,7 @@ export class CatalogueComponent implements OnInit {
   itemsPerPage: number = 6;
   maxPageNumber: number = 1;
   isLoading: boolean = true;
+  quantities: Map<number, number> = new Map();
 
   constructor(private catalogueService: CatalogueService, private store: Store) {}
 
@@ -69,7 +70,25 @@ export class CatalogueComponent implements OnInit {
     this.filteredProducts$.subscribe(products => this.updatePagination(products));
   }
 
+  getQuantity(product: Product): number {
+    return this.quantities.get(product.id) || 1;
+  }
+
+  incrementQuantity(product: Product) {
+    const currentQty = this.getQuantity(product);
+    this.quantities.set(product.id, currentQty + 1);
+  }
+
+  decrementQuantity(product: Product) {
+    const currentQty = this.getQuantity(product);
+    if (currentQty > 1) {
+      this.quantities.set(product.id, currentQty - 1);
+    }
+  }
+
   addToCart(product: Product) {
-    this.store.dispatch(new AddToCart(product));
+    const quantity = this.getQuantity(product);
+    this.store.dispatch(new AddToCart(product, quantity));
+    this.quantities.set(product.id, 1); // réinitialiser la quantité après l'ajout
   }
 }

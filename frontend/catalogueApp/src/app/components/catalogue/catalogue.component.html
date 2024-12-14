@@ -13,15 +13,20 @@
 <div class="product-container">
     <div class="product-card" *ngFor="let product of paginatedProducts">
         <div class="product-card-inner">
-          <img [src]="product.image" alt="{{ product.name }}" class="product-image" />
-          <div class="product-info">
+        <img [src]="product.image" alt="{{ product.name }}" class="product-image" />
+        <div class="product-info">
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-category">{{ product.category }}</p>
             <p class="product-price">{{ product.price | currency:'EUR':'symbol' }}</p>
+            <div class="quantity-selector">
+            <button (click)="decrementQuantity(product)">-</button>
+            <span>{{ getQuantity(product) }}</span>
+            <button (click)="incrementQuantity(product)">+</button>
+            </div>
             <button (click)="addToCart(product)">Ajouter au panier</button>
-          </div>
         </div>
-      </div>      
+        </div>
+    </div>
 </div>
 
 <div class="pagination">
