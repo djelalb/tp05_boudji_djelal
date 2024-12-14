@@ -128,3 +128,36 @@
     cursor: not-allowed;
     background-color: #333;
 }
+
+/* Bouton Ajouter au panier */
+.product-card button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #e76f51;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #e63946;
+    box-shadow: 0 4px 12px rgba(230, 63, 70, 0.4);
+    transform: translateY(-2px);
+}
+
+.product-card button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(230, 63, 70, 0.3);
+}
+
+/* Bouton Désactivé */
+.product-card button:disabled {
+    background-color: #b0b0b0;
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}

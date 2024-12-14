@@ -67,10 +67,43 @@ a:hover {
     text-align: center;
 }
 
-.cart-icon {
+.header {
+    position: relative;
+    padding: 20px;
+}
+
+.cart-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-icon {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: #e9c46a;
+    padding: 10px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
   }
   
+  .cart-count {
+    font-size: 1rem;
+    background-color: #e76f51;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    min-width: 20px;
+    text-align: center;
+  }
+  
+  .cart-icon:hover {
+    color: #e76f51;
+  }

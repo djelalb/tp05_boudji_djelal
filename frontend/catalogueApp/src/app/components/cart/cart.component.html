@@ -1,32 +1,48 @@
 <div class="cart-page">
-  <h1>Votre Panier</h1>
+  <h1 class="cart-title">Votre Panier</h1>
 
   <!-- Liste des produits dans le panier -->
-  <div *ngIf="cartItems$ | async as cartItems">
-    <div *ngIf="cartItems.length > 0; else emptyCart">
+  <div class="cart-container" *ngIf="cartItems$ | async as cartItems">
+    <div *ngIf="cartItems.length > 0; else emptyCart" class="cart-item-list">
       <div class="cart-item" *ngFor="let product of cartItems">
-        <img [src]="product.image" alt="{{ product.name }}" />
-        <div class="details">
-          <span>{{ product.name }}</span>
-          <span>{{ product.price | currency: 'EUR':'symbol' }}</span>
-          <button (click)="removeFromCart(product.id)">Supprimer</button>
+        <div class="cart-item-image">
+          <img [src]="product.image" alt="{{ product.name }}" />
         </div>
+        <div class="cart-item-details">
+          <h3 class="cart-item-name">{{ product.name }}</h3>
+          <p class="cart-item-price">{{ product.price | currency: 'EUR':'symbol' }}</p>
+          <button class="cart-item-remove" (click)="removeFromCart(product.id)">
+            <i class="fas fa-trash"></i> Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total et actions -->
+    <div class="cart-summary" *ngIf="total$ | async as total">
+      <div class="cart-total">
+        <span>Total</span>
+        <span class="total-amount">{{ total | currency: 'EUR':'symbol' }}</span>
+      </div>
+      <div class="cart-actions">
+        <button class="cart-button secondary" routerLink="">
+          <i class="fas fa-arrow-left"></i> Continuer vos achats
+        </button>
+        <button class="cart-button primary">
+          <i class="fas fa-check"></i> Valider la commande
+        </button>
       </div>
     </div>
   </div>
 
   <!-- Affichage si le panier est vide -->
   <ng-template #emptyCart>
-    <div class="alert alert-info">
-      Votre panier est vide.
+    <div class="empty-cart">
+      <i class="fas fa-shopping-cart"></i>
+      <p>Votre panier est vide</p>
+      <button class="cart-button secondary" routerLink="">
+        Découvrir nos produits
+      </button>
     </div>
   </ng-template>
-
-  <!-- Total -->
-  <div *ngIf="total$ | async as total">
-    <h2>Total : {{ total | currency: 'EUR':'symbol' }}</h2>
-    <button routerLink="">Continuer vos achats</button>
-  </div>
-
-  <button routerLink="">Retour au catalogue</button>
 </div>

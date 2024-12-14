@@ -16,14 +16,7 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent { 
-  @Select(CartState.getCartItems) cartItems$!: Observable<Product[]>;
   @Select(CartState.getCartCount) cartCount$!: Observable<number>;
-
-  showCartPreview: boolean = false;
-
-  toggleCartPreview() {
-    this.showCartPreview = !this.showCartPreview;
-  }
 
   constructor(private router: Router, private renderer: Renderer2) {
     this.router.events.subscribe(() => {
@@ -34,6 +27,7 @@ export class AppComponent {
       }
     });
   }
+
   isCartRoute(): boolean {
     return this.router.url === '/cart';
   }
