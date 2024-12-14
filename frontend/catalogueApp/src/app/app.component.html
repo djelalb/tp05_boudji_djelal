@@ -8,7 +8,9 @@
     <div class="cart-button">
       <a routerLink="/cart" class="cart-icon">
         <span>🛒</span>
-        <span class="cart-count">{{ cartCount$ | async }}</span>
+        <span class="cart-count" *ngIf="(cartCount$ | async) as count">
+          {{ count }}
+        </span>
       </a>
     </div>
   </div>
