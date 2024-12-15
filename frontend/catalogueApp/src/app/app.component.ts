@@ -1,11 +1,10 @@
-import { Component, Renderer2  } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { SearchComponent } from './components/search/search.component';
 import { Store, Select } from '@ngxs/store';
 import { CartState } from './state/cart.state';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { Product } from './services/catalogue.service';
 import { RouterModule, Router } from '@angular/router';
 
 @Component({
@@ -16,9 +15,11 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent { 
-  @Select(CartState.getCartCount) cartCount$!: Observable<number>;
+  cartCount$: Observable<number>;
 
-  constructor(private router: Router, private renderer: Renderer2) {
+  constructor(private router: Router, private renderer: Renderer2, private store: Store) {
+    this.cartCount$ = this.store.select(CartState.getCartCount);
+
     this.router.events.subscribe(() => {
       if (this.router.url === '/cart') {
         this.renderer.addClass(document.body, 'cart-active');

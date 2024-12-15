@@ -7,10 +7,10 @@
     <h1>Catalogue de Produits</h1>
     <div class="cart-button">
       <a routerLink="/cart" class="cart-icon">
-        <span>🛒</span>
-        <span class="cart-count" *ngIf="(cartCount$ | async) as count">
-          {{ count }}
-        </span>
+        🛒
+        <ng-container *ngIf="cartCount$ | async as count">
+          <span class="cart-count" *ngIf="count > 0">{{count}}</span>
+        </ng-container>
       </a>
     </div>
   </div>

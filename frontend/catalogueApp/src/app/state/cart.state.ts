@@ -41,9 +41,16 @@ export class CartState {
   
   @Selector()
   static getCartCount(state: CartStateModel): number {
-    return (state?.items || [])
-      .filter(item => item && item.product)
-      .reduce((total, item) => total + (item?.quantity || 0), 0);
+    if (!state?.items) return 0;
+    
+    return state.items
+      .filter(item => item && (item.quantity || item.product))
+      .reduce((total, item) => {
+        if (item.quantity && item.product) {
+          return total + item.quantity;
+        }
+        return total + 1;
+      }, 0);
   }
 
   @Action(AddToCart)
